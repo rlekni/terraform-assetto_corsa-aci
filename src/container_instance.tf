@@ -3,9 +3,9 @@ resource "azurerm_container_group" "acserver" {
   location            = azurerm_resource_group.acserver.location
   resource_group_name = azurerm_resource_group.acserver.name
   ip_address_type     = "public"
-  # dns_name_label      = "aci-label"
-  os_type        = "Linux"
-  restart_policy = "Always"
+  dns_name_label      = random_string.dns_label.result
+  os_type             = "Linux"
+  restart_policy      = "Always"
 
   container {
     name   = "acserver"
